@@ -24,7 +24,8 @@ function App() {
     )
     const [turn, setTurn] = useState(TURNS.X)
     const updataBoard = () => {
-
+      const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
+      setTurn(newTurn)
     }
   return (
     <main className='board'>
