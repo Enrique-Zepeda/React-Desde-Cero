@@ -13,7 +13,7 @@ export function App () {
         El Pelonchas
         </TwitterFollowCard>
 
-        <TwitterFollowCard userName="jara">
+        <TwitterFollowCard userName="dani">
         Daniel Jara
         </TwitterFollowCard>
         </section>
