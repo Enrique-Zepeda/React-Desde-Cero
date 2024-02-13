@@ -16,6 +16,13 @@ useEffect(() => {
   if (enabled) {
     window.addEventListener('pointermove', handleMove)
   }
+  //cleanup
+  //cuando el componente se desmonta
+  // cuando cambian las dependencias antes de ejecutar el efecto de nuevo
+  return () => {//tenemos que limpiar las subscriciones
+    console.log('cleanup')
+    window.removeEventListener('pointermove', handleMove)
+  }
 },[enabled])
 
 
