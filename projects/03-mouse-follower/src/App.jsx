@@ -4,15 +4,18 @@ import { useEffect, useState } from "react"
 function App() {
 
   const [enabled, setEnabled] = useState(false)
+  const [position, setPosition] = useState({x:0, y:0})
 
 useEffect(() => {
   console.log("Efecto" , {enabled})
   const handleMove = (event) => {
     const { clientX, clientY } = event
     console.log("handleMove", {clientX, clientY})
+    setPosition({x:clientX, y:clientY})
   }
-
-  window.addEventListener('pointermove', handleMove)
+  if (enabled) {
+    window.addEventListener('pointermove', handleMove)
+  }
 },[enabled])
 
 
@@ -29,7 +32,7 @@ useEffect(() => {
         top: -25,
         width: 50,
         height: 50,
-        // transform: `translate(${position.x}px, ${position.y}px)`
+        transform: `translate(${position.x}px, ${position.y}px)`
       }}
       />
       <button onClick={() => setEnabled(!enabled)}>{enabled ? 'Desactivar' : 'Activar'} Activar Seguir Puntero</button>
