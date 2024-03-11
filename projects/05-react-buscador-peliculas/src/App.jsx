@@ -3,7 +3,7 @@ import { Movies } from "./components/Movies";
 import withoutResponse from "./mocks/no-results.json";
 import responseMovie from "./mocks/with-results.json";
 
-export const useMovie = () => {
+const useMovie = () => {
   const movies = responseMovie.Search;
 
   const mappedMovies = movies?.map((movie) => ({
