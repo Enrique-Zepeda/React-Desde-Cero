@@ -6,10 +6,10 @@ import { useMovies } from "./hooks/useMovies";
 function App() {
   const { movies } = useMovies();
   const inputRef = useRef();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const value = inputRef.current.value;
-    console.log(value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const fields = Object.fromEntries(new window.FormData(event.target));
+    console.log(fields);
   };
   return (
     <div className="page">
@@ -17,7 +17,7 @@ function App() {
       <header>
         <form onSubmit={handleSubmit}>
           <input
-            ref={inputRef}
+            name="query" /*Se le pone un nombre cuando se guarda con query*/
             type="text"
             placeholder="Avengers, Star Wars..."
           />
