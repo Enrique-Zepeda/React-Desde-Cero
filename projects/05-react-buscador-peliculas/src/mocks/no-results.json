@@ -1,6 +1,3 @@
-// 20240311081938
-// https://www.omdbapi.com/?apikey=4287ad07&s=Avenaasdasdas
-
 {
   "Response": "False",
   "Error": "Movie not found!"
