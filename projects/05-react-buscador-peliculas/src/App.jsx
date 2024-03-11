@@ -1,9 +1,11 @@
 import "./App.css";
+import { Movies } from "./components/Movies";
 import withoutResponse from "./mocks/no-results.json";
 import responseMovie from "./mocks/with-results.json";
+
 function App() {
-  const movies = responseMovie.Search; //guardo el arreglo en movies
-  const hasMovies = movies?.length > 0; //verifico si tiene peliculas
+  const movies = responseMovie.Search;
+
   return (
     <div className="page">
       <h1>Buscador peliculas</h1>
@@ -15,19 +17,7 @@ function App() {
         </form>
       </header>
       <main>
-        {hasMovies ? (
-          <ul>
-            {movies.map((movie) => (
-              <li key={movie.imdbID}>
-                <h3>{movie.Title}</h3>
-                <p>{movie.Year}</p>
-                <img src={movie.Poster} alt={movie.Title} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No existe la pelicula buscada</p>
-        )}
+        <Movies movies={movies} />
       </main>
     </div>
   );
