@@ -3,32 +3,39 @@ import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 
-function App() {
-  const { movies } = useMovies();
-  const [query, setQuery] = useState("");
+function useSearch() {
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log({ query });
-  };
 
-  const handleChange = (event) => {
-    const newQuery = event.target.value;
-    if (newQuery.startsWith(" ")) return;
-    setQuery(newQuery);
-    if (newQuery === "") {
+  useEffect(() => {
+    if (search === "") {
       setError("no se puede buscar una pelicula si el input esta vacio");
       return;
     }
-    if (newQuery.match(/^\d+$/)) {
+    if (search.match(/^\d+$/)) {
       setError("no se puede buscar una pelicula con un numero");
       return;
     }
-    if (newQuery.length < 3) {
+    if (search.length < 3) {
       setError("La pelicula debe tener almenos 3 caracteres");
       return;
     }
     setError(null);
+  }, [search]);
+
+  return { search, setSearch, error };
+}
+
+function App() {
+  const { movies } = useMovies();
+  const { search, setSearch, error } = useSearch();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log({ search });
+  };
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
   };
   return (
     <div className="page">
@@ -37,7 +44,7 @@ function App() {
         <form onSubmit={handleSubmit}>
           <input
             onChange={handleChange}
-            value={query}
+            value={search}
             name="query" /*Se le pone un nombre cuando se guarda con query*/
             type="text"
             placeholder="Avengers, Star Wars..."
