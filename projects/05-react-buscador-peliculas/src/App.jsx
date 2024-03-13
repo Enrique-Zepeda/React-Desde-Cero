@@ -6,8 +6,12 @@ import { useMovies } from "./hooks/useMovies";
 function useSearch() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
-
+  const isFirstInput = useRef(true);
   useEffect(() => {
+    if (isFirstInput.current) {
+      isFirstInput.current = search === "";
+      return;
+    }
     if (search === "") {
       setError("no se puede buscar una pelicula si el input esta vacio");
       return;
