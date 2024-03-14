@@ -19,5 +19,5 @@ export const useMovies = ({ search }) => {
     }
   };
 
-  return { movies, getMovies };
+  return { movies, getMovies, isLoading };
 };

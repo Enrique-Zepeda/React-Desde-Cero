@@ -32,7 +32,7 @@ function useSearch() {
 
 function App() {
   const { search, setSearch, error } = useSearch();
-  const { movies, getMovies } = useMovies({ search });
+  const { movies, getMovies, isLoading } = useMovies({ search });
   const handleSubmit = (event) => {
     event.preventDefault();
     getMovies();
@@ -58,9 +58,7 @@ function App() {
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </header>
-      <main>
-        <Movies movies={movies} />
-      </main>
+      <main>{isLoading ? <p>Cargando...</p> : <Movies movies={movies} />}</main>
     </div>
   );
 }
