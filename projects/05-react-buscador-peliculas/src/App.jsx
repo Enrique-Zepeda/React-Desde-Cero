@@ -31,11 +31,11 @@ function useSearch() {
 }
 
 function App() {
-  const { movies } = useMovies();
   const { search, setSearch, error } = useSearch();
+  const { movies, getMovies } = useMovies({ search });
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ search });
+    getMovies();
   };
 
   const handleChange = (event) => {
