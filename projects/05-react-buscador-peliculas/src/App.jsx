@@ -45,7 +45,9 @@ function App() {
   };
 
   const handleChange = (event) => {
-    setSearch(event.target.value);
+    const newMovies = event.target.value;
+    setSearch(newMovies);
+    getMovies({ search: newMovies });
   };
   return (
     <div className="page">
