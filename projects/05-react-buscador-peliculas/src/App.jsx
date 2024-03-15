@@ -31,8 +31,14 @@ function useSearch() {
 }
 
 function App() {
+  const [sort, setSort] = useState(false);
   const { search, setSearch, error } = useSearch();
-  const { movies, getMovies, isLoading } = useMovies({ search });
+  const { movies, getMovies, isLoading } = useMovies({ search, sort });
+
+  const handleSort = () => {
+    setSort(!sort);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     getMovies();
@@ -53,6 +59,7 @@ function App() {
             type="text"
             placeholder="Avengers, Star Wars..."
           />
+          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type="submit">Buscar</button>
           {/*Siempre el boton de un formulario es tipo submit*/}
         </form>
