@@ -2,7 +2,7 @@ import { AddToCartIcon } from "./Icons";
 import "../styles/Products.css";
 export const Products = ({ products }) => {
   return (
-    <main className="">
+    <main className="products">
       <ul>
         {products.map((product) => (
           <li key={product.id}>
