@@ -1,3 +1,5 @@
+import "../styles/Filters.css";
+
 export const Filters = () => {
   return (
     <section className="filters">
@@ -10,6 +12,8 @@ export const Filters = () => {
         <label htmlFor="category">Categoria</label>
         <select id="category">
           <option value="all">ALL</option>
+          <option value="laptops">Laptops</option>
+          <option value="smartphones">Celulares</option>
         </select>
       </div>
     </section>
