@@ -1,9 +1,9 @@
 import { Filters } from "./Filters";
-export const Header = () => {
+export const Header = ({ changeFilters }) => {
   return (
     <>
       <h1>Shopping Card 🛒</h1>
-      <Filters />
+      <Filters onChange={changeFilters} />
     </>
   );
 };
