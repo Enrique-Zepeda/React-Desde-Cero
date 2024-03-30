@@ -40,6 +40,10 @@ export const Filters = ({ onChange }) => {
           <option value="all">ALL</option>
           <option value="laptops">Laptops</option>
           <option value="smartphones">Celulares</option>
+          <option value="fragrances">Perfumes</option>
+          <option value="skincare">Cremas Faciales</option>
+          <option value="groceries">Comestibles</option>
+          <option value="home-decoration">Decoracion del hogar</option>
         </select>
       </div>
     </section>
