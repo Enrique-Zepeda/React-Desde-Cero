@@ -39,7 +39,7 @@ export const Filters = ({ onChange }) => {
       <div>
         <label htmlFor={minCategoryFilterId}>Categoria</label>
         <select id={minCategoryFilterId} onChange={handleChangeCategory}>
-          <option value="all">ALL</option>
+          <option value="all">Todo</option>
           <option value="laptops">Laptops</option>
           <option value="smartphones">Celulares</option>
           <option value="fragrances">Perfumes</option>
