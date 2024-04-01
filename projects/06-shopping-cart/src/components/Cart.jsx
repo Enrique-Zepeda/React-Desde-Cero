@@ -14,7 +14,7 @@ export const Cart = () => {
           <strong>{title}</strong> - ${price}
         </div>
         <footer>
-          <small>Cantidad:{quantity}</small>
+          <small>Cantidad: {quantity}</small>
           <button onClick={addCart}>+</button>
         </footer>
       </li>

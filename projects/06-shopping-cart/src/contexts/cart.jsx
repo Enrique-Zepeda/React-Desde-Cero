@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
       //una forma usando structureClone
       const newCart = structuredClone(cart);
       newCart[productInCartIndex].quantity += 1;
-      return setCart[newCart];
+      return setCart(newCart);
     }
     //si el producto no esta en el carro
     setCart((prevState) => [
