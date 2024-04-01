@@ -12,5 +12,5 @@ export const useFilters = () => {
       );
     });
   };
-  return { filterProducts, setFilters };
+  return { filterProducts, setFilters, filters };
 };
