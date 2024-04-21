@@ -30,14 +30,14 @@ const reducer = (state: State, action) => {
   if (type === "SET_TO_LANGUAGE") {
     return {
       ...state,
-      toLanguage: payload,
+      toLanguage: action.payload,
     };
   }
   if (type === "SET_FROM_TEXT") {
     return {
       ...state,
       loading: true,
-      fromText: payload,
+      fromText: action.payload,
       result: "",
     };
   }
@@ -45,7 +45,7 @@ const reducer = (state: State, action) => {
     return {
       ...state,
       loading: false,
-      result: payload,
+      result: action.payload,
     };
   }
   return state;
@@ -53,10 +53,19 @@ const reducer = (state: State, action) => {
 
 function App() {
   // 3. Use useReducer hook to use the reducer
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ fromLanguage, toLanguage, fromText, result, loading }, dispatch] =
+    useReducer(reducer, initialState);
+  console.log(fromLanguage);
   return (
     <div className="App">
       <h1>Google Translate</h1>
+      <button
+        onClick={() => {
+          dispatch({ type: "SET_FROM_LANGUAGE", payload: "es" });
+        }}
+      >
+        Cambiar a español
+      </button>
     </div>
   );
 }
