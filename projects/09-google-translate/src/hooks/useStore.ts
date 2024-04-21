@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { type State } from "../assets/types";
+import { type State, type Language, type FromLanguage } from "../types";
 // 1. Create a initial state for the reducer
 const initialState: State = {
   //reducer initial state
@@ -49,15 +49,15 @@ const reducer = (state: State, action) => {
   return state;
 };
 
-function useStore() {
+export function useStore() {
   // 3. Use useReducer hook to use the reducer
   const [{ fromLanguage, toLanguage, fromText, result, loading }, dispatch] =
     useReducer(reducer, initialState);
   const interchangeLanguages = () =>
     dispatch({ type: "INTERCHANGE_LANGUAGES" });
-  const setFromLanguage = (payload: string) =>
+  const setFromLanguage = (payload: FromLanguage) =>
     dispatch({ type: "SET_FROM_LANGUAGE", payload });
-  const setToLanguage = (payload: string) =>
+  const setToLanguage = (payload: Language) =>
     dispatch({ type: "SET_TO_LANGUAGE", payload });
   const setFromText = (payload: string) =>
     dispatch({ type: "SET_FROM_TEXT", payload });
