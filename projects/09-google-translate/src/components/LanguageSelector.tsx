@@ -1,14 +1,18 @@
 import Form from "react-bootstrap/Form";
-import { SUPPORTED_LANGUAGES } from "../constants";
-import { FromLanguage, type Language } from "../types";
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
+import { type FromLanguage, SectionType, type Language } from "../types.d";
 
 type Props =
   | {
-      type: "from";
+      type: SectionType.From;
       value: FromLanguage;
       onChange: (language: FromLanguage) => void;
     }
-  | { type: "to"; value: Language; onChange: (language: Language) => void };
+  | {
+      type: SectionType.To;
+      value: Language;
+      onChange: (language: Language) => void;
+    };
 
 export function LanguageSelector({ onChange, type, value }: Props) {
   const hancleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -20,6 +24,9 @@ export function LanguageSelector({ onChange, type, value }: Props) {
       onChange={hancleChange}
       value={value}
     >
+      {type === SectionType.From && (
+        <option value={AUTO_LANGUAGE}>Detectar idioma</option>
+      )}
       {Object.entries(SUPPORTED_LANGUAGES).map(([key, literal]) => (
         <option key={key} value={key}>
           {literal}
