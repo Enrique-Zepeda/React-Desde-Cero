@@ -1,22 +1,43 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./App.css";
 import { useStore } from "./hooks/useStore";
+import { AUTO_LANGUAGE } from "./constants";
+import { ArrowsIcon } from "./components/Icons";
+import { LanguageSelector } from "./components/LanguageSelector";
 
 function App() {
-  const { fromLanguage, setFromLanguage } = useStore();
+  const {
+    fromLanguage,
+    setFromLanguage,
+    toLanguage,
+    interchangeLanguages,
+    setToLanguage,
+  } = useStore();
 
   return (
-    <div className="App">
+    <Container fluid>
       <h1>Google Translate</h1>
-      <button
-        onClick={() => {
-          setFromLanguage("es");
-        }}
-      >
-        Cambiar a español
-      </button>
-      {fromLanguage}
-    </div>
+      <Row>
+        <Col>
+          <LanguageSelector onChange={setFromLanguage} />
+        </Col>
+        <Col>
+          <Button
+            variant="link"
+            disabled={fromLanguage === AUTO_LANGUAGE}
+            onClick={interchangeLanguages}
+          >
+            <ArrowsIcon />
+          </Button>
+        </Col>
+        <Col>
+          <LanguageSelector onChange={setToLanguage} />
+          {toLanguage}
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
